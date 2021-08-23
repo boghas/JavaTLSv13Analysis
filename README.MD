@@ -20,10 +20,13 @@ This an analysis of TLS 1.3 version while also comparing with TLS 1.2 version.
 		** Added the packet tracing for the plain text communication between client and server
 			*** The wireshark capture was recorded on a kali linux virtual machine
 
-		*** Added the TLS version negocition and cipcher suites negocition
+		** Added the TLS version negocition and cipcher suites negocition
 			*** To negocitiate the TLS version set the wanted version in client.setEnabledProtocols for example:
-				*** client.setEnabledProtocols(new String[] {"TLSv1.3"});
+				**** client.setEnabledProtocols(new String[] {"TLSv1.3"});
 				
 			*** To negocitiate the cipcher suites used set the wanted cipher suite in client.setEnabledCipherSuites for example:
 				**** client.setEnabledCipherSuites(new String[] {"TLS_AES_128_GCM_SHA256"});
+		
+		** To enable/disable logs commentate/uncommentate one of the log system properties for example:
+			*** System.setProperty("javax.net.debug", "ssl:handshake:data");
 	
