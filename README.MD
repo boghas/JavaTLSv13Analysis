@@ -35,6 +35,7 @@ This an analysis of TLS 1.3 version while also comparing with TLS 1.2 version.
 		** Traffic tracing for TLSv1.2 and TLSv1.3 can be found in traffic_tracing folder
 
 		** Examples of getting server certificate chain with openssl in the openssl folder
+			*** To get the server certificate with openssl run the following command in cmd openssl s_client -showcerts -connect localhost:9000 
 
 		** TODO:
 			*** SSLSocketClientWithTunneling
