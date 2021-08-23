@@ -4,7 +4,6 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.*;
-import java.net.Socket;
 
 public class Server {
 
@@ -12,9 +11,9 @@ public class Server {
 
     public static void main(String[] args) {
 
-        System.setProperty("javax.net.ssl.keyStore", "C:\\Bogdan\\Facultate\\Licenta\\credentiale\\tls_analysis.jks");
+        System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
-        System.setProperty("javax.net.ssl.trustStore", "C:\\Bogdan\\Facultate\\Licenta\\credentiale\\tls_analysis.jks");
+        System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
 
 

@@ -15,9 +15,9 @@ public class EchoSSLClient {
 
     public static void main(String[] args) {
 
-        System.setProperty("javax.net.ssl.keyStore", "C:\\Bogdan\\Facultate\\Licenta\\credentiale\\tls_analysis.jks");
+        System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
-        System.setProperty("javax.net.ssl.trustStore", "C:\\Bogdan\\Facultate\\Licenta\\credentiale\\tls_analysis.jks");
+        System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
 
         System.out.println("Searching for a connection on port: " + port);
