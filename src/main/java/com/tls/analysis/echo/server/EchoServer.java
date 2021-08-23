@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-    public final static int port = 9000;
+    private final static int port = 9000;
 
     public static void main(String[] args) {
         System.out.println("Server starting...");
@@ -23,14 +23,12 @@ public class EchoServer {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
             PrintWriter output = new PrintWriter(client.getOutputStream(), true);
             String line;
-            while((line = bufferedReader.readLine())!= null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 System.out.println("From Client: " + line);
                 output.println(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
