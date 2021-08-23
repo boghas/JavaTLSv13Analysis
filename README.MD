@@ -2,6 +2,18 @@
 
 This an analysis of TLS 1.3 version while also comparing with TLS 1.2 version.
 
-	* Project is starting first with the implementation of a simple HTTP server to demonstrate the following:
+	* Project is starting first with the implementation of a simple Echo server and Echo client to demonstrate the following:
 		** Why we need the TLS protocol
 		** How to add the TLS protocol over an existing HTTP server 
+		
+			*** To test the Echo Server run the following class:
+				**** src/main/java/com.tls.analysis.echo.server.EchoServer
+				
+			*** To test the Echo client run the following class:
+				**** src/main/java/com.tls.analysis.echo.client.EchoClient
+				
+		** Created the secure communication between the client and the server trough SSL:
+			*** To test the secure communication you need to run the following classes:
+				**** src/main/java/com.tls.analysis.echoTLS.EchoSSLServer.Server
+				**** src/main/java/com.tls.analysis.echoTLS.EchoSSLClient.EchoSSLCient
+	
