@@ -16,6 +16,11 @@ public class Server {
         System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
 
+        // Enable log
+        //System.setProperty("javax.net.debug", "ssl:handshake:data");
+        // Log everything
+        // System.setProperty("javax.net.debug", "all:verbose");
+
 
         System.out.println("SSL server starting...");
         System.out.println("Listening on port: " + port);
@@ -24,6 +29,7 @@ public class Server {
             SSLServerSocket sslServerSocket = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(port);
             SSLSocket client = (SSLSocket) sslServerSocket.accept();
             client.setEnabledProtocols(new String[] {"TLSv1.3"});
+            //client.setEnabledProtocols(new String[] {"TLSv1.2"});
             client.setEnabledCipherSuites(new String[] {"TLS_AES_128_GCM_SHA256"});
             System.out.println("Connection established with: " + client.getInetAddress());
 
