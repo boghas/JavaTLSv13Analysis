@@ -16,4 +16,7 @@ This an analysis of TLS 1.3 version while also comparing with TLS 1.2 version.
 			*** To test the secure communication you need to run the following classes:
 				**** src/main/java/com.tls.analysis.echoTLS.EchoSSLServer.Server
 				**** src/main/java/com.tls.analysis.echoTLS.EchoSSLClient.EchoSSLCient
+
+		** Added the packet tracing for the plain text communication between client and server
+			*** The wireshark capture was recorded on a kali linux virtual machine
 	
