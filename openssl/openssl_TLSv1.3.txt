@@ -1,0 +1,50 @@
+CONNECTED(00000004)
+---
+Certificate chain
+ 0 s:C = RO, ST = Romania, L = Bucuresti, O = Facultatea ETTI, OU = IT, CN = Bogdan Hasan
+   i:C = RO, ST = Romania, L = Bucuresti, O = Facultatea ETTI, OU = IT, CN = Bogdan Hasan
+-----BEGIN CERTIFICATE-----
+MIIDgTCCAmmgAwIBAgIEC6flujANBgkqhkiG9w0BAQsFADBxMQswCQYDVQQGEwJS
+TzEQMA4GA1UECBMHUm9tYW5pYTESMBAGA1UEBxMJQnVjdXJlc3RpMRgwFgYDVQQK
+Ew9GYWN1bHRhdGVhIEVUVEkxCzAJBgNVBAsTAklUMRUwEwYDVQQDEwxCb2dkYW4g
+SGFzYW4wHhcNMjEwODIwMTcwMTIwWhcNMjExMTE4MTcwMTIwWjBxMQswCQYDVQQG
+EwJSTzEQMA4GA1UECBMHUm9tYW5pYTESMBAGA1UEBxMJQnVjdXJlc3RpMRgwFgYD
+VQQKEw9GYWN1bHRhdGVhIEVUVEkxCzAJBgNVBAsTAklUMRUwEwYDVQQDEwxCb2dk
+YW4gSGFzYW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDaWF7lvKem
+l/FtI2qQhQJhzKEUWWUcMSnoH4NpBt0kxYbxNjZf7tCgjXXy/jH/gh1fnMLareAI
+MuD9KFfuHUKwab93a5te0FadfGaakztEYzcNcaX4L66QbRwJFWK48wRv3TnPCfSE
+KgqAjwS0i+JBZDeomHcNjQdxWBHVvncByBYdNFMDjwH70/PcSDT/5M9DNpTzNcH1
+j8Fxr0zhZBklsdjoPikNKgSwH7yK1wvLfzPJJ0w+DeMxBbxd+rsDeB4Tzs8pdpbn
+I20xn31JUihnvOg4W4OEeLj7aUfWGi90wV+iMDvskE2+LqX0SWR2lXNFDDeNVFvv
+RB3h70yEsZy/AgMBAAGjITAfMB0GA1UdDgQWBBRx3zitaQPOBvmSXb/KCWwug8h/
+zTANBgkqhkiG9w0BAQsFAAOCAQEA2ABj+Tcb3x4LY1ul+g4OGNWufZ+5bYzFVviZ
+++fAGOJmNXflUKNGu7XaDy80CSVBksSRDfUr88vhD7Xf9KYXgerriuteWmM7IuhK
+4Y99lomU6LlNGucCdNUlGgjc8rOvATOA6X1BXqEVImZTMZCngPfNzJrWRXtxgv2W
+Iqniv8TW4uXhvnnY/PxoJ9JPlRfontxQemivMdEr3oBX3R4QxpjWixS1ZH2EX6FD
+KZ90ZdIBR7h89qc+EECka1O5eFog1xXt282asHHIAm6kQogI6z76QLUOMN1zsKh8
+O5gf7b1wsgHu4N8siq3+5kGworKcnblDwvrDMPOBbbia3GhJeQ==
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=C = RO, ST = Romania, L = Bucuresti, O = Facultatea ETTI, OU = IT, CN = Bogdan Hasan
+
+issuer=C = RO, ST = Romania, L = Bucuresti, O = Facultatea ETTI, OU = IT, CN = Bogdan Hasan
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1531 bytes and written 367 bytes
+Verification error: self signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self signed certificate)
+---

@@ -28,9 +28,9 @@ public class Server {
         try {
             SSLServerSocket sslServerSocket = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(port);
             SSLSocket client = (SSLSocket) sslServerSocket.accept();
-            client.setEnabledProtocols(new String[] {"TLSv1.3"});
-            //client.setEnabledProtocols(new String[] {"TLSv1.2"});
-            client.setEnabledCipherSuites(new String[] {"TLS_AES_128_GCM_SHA256"});
+            //client.setEnabledProtocols(new String[] {"TLSv1.3"});
+            client.setEnabledProtocols(new String[] {"TLSv1.2"});
+            //client.setEnabledCipherSuites(new String[] {"TLS_AES_128_GCM_SHA256"});
             System.out.println("Connection established with: " + client.getInetAddress());
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
