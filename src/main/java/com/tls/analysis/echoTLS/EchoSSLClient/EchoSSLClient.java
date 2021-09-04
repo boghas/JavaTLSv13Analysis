@@ -10,25 +10,45 @@ import java.util.Scanner;
 
 public class EchoSSLClient {
 
-    private final static int port = 9000;
-    public final static String host = "localhost";
-
     public static void main(String[] args) {
 
-        System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
-        System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
-        System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
-        System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
+        String hostname;
+        int port;
+        String certificates_type;
 
-        System.out.println("Searching for a connection on port: " + port);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Insert the server to connect to: ");
+        hostname = scanner.nextLine();
+
+        System.out.print("Insert the port the server is listening to: ");
+        port = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("What types of certificates to use: JKS or PKS: ");
+        certificates_type = scanner.nextLine();
+
+        if(certificates_type.equalsIgnoreCase("JKS")) {
+            System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
+            System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
+            System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
+            System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
+        }
+        else if(certificates_type.equalsIgnoreCase("PKS")) {
+            System.setProperty("javax.net.ssl.keyStore", "C:\\Bogdan\\OC\\keys\\client_ks.pkcs12");
+            System.setProperty("javax.net.ssl.keyStorePassword", "password");
+            System.setProperty("javax.net.ssl.trustStore", "C:\\Bogdan\\OC\\keys\\client_ks.pkcs12");
+            System.setProperty("javax.net.ssl.trustStorePassword", "password");
+            System.out.println("This type of certificates is not yet valid!");
+        }
+
+        System.out.println("Searching for a connection on: " + hostname + " on port: " + port);
 
         try {
-            SSLSocket client = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, port);
+            SSLSocket client = (SSLSocket) SSLSocketFactory.getDefault().createSocket(hostname, port);
             System.out.println("Connected to the server.");
 
             PrintWriter out = new PrintWriter(client.getOutputStream(), true);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            Scanner scanner = new Scanner(System.in);
             while (true) {
                 System.out.println("Spune ceva prin SSL: ");
                 String input = scanner.nextLine();

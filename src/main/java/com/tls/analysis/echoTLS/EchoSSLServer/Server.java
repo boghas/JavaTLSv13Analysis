@@ -4,17 +4,26 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.*;
+import java.util.Scanner;
 
 public class Server {
 
-    public final static int port = 9000;
-
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int port;
+        boolean log_true = false;
+
+        System.out.print("Insert the port to listen to: ");
+        port = scanner.nextInt();
+
+        System.out.println("Server starting on localhost listening on port: " + port);
 
         System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
         System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
+
 
         // Enable log
         //System.setProperty("javax.net.debug", "ssl:handshake:data");
@@ -22,10 +31,8 @@ public class Server {
         // System.setProperty("javax.net.debug", "all:verbose");
 
 
-        System.out.println("SSL server starting...");
-        System.out.println("Listening on port: " + port);
-
         try {
+            System.out.println("Waiting for connections...");
             SSLServerSocket sslServerSocket = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(port);
             SSLSocket client = (SSLSocket) sslServerSocket.accept();
             //client.setEnabledProtocols(new String[] {"TLSv1.3"});
