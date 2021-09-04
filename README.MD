@@ -37,10 +37,12 @@ This an analysis of TLS 1.3 version while also comparing with TLS 1.2 version.
 		** Examples of getting server certificate chain with openssl in the openssl folder
 			*** To get the server certificate with openssl run the following command in cmd openssl s_client -showcerts -connect localhost:9000 
 
-		** TODO:
-			*** SSLSocketClientWithTunneling
-			*** SSLSocketClientWithClientAuth
-			*** An example of an HTTPS server
+		** Added ClassFileServer which is a server that accepts both HTTP and HTTPS connections.
+			*** When running the ClassFileServer it asks for:
+				**** The port on which the server will listen to
+				**** The path to the file we want to share
+				**** The protocol we use: TLS for encrypted communication, empty for plain communication
+				**** If we want to force the client authentication: true for client authentication, false otherwise
 			
 
 
