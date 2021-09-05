@@ -1,0 +1,11 @@
+keytool -import -alias test1 -keystore "C:\Program Files\Java\jdk-11.0.10\lib\security\cacerts" -file "C:\Bogdan\OC\keys\clione_cert_ec.cer"
+
+keytool -import -alias test2 -keystore "C:\Program Files\Java\jdk-11.0.10\lib\security\cacerts" -file "C:\Bogdan\OC\keys\clione_cert_rsa.cer"
+
+keytool -import -alias test3 -keystore "C:\Program Files\Java\jdk-11.0.10\lib\security\cacerts" -file "C:\Bogdan\OC\keys\srvone_cert_ec.cer"
+
+keytool -import -alias test4 -keystore "C:\Program Files\Java\jdk-11.0.10\lib\security\cacerts" -file "C:\Bogdan\OC\keys\srvone_cert_rsa.cer"
+
+keytool -import -alias test5 -keystore "C:\Program Files\Java\jdk-11.0.10\lib\security\cacerts" -file "C:\Bogdan\Facultate\Licenta\src\credentiale\public.cer"
+
+keytool -import -alias test6 -cacerts -file "C:\Bogdan\Facultate\Licenta\src\credentiale\client.cert"

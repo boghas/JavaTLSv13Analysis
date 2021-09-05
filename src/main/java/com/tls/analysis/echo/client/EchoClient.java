@@ -19,10 +19,10 @@ public class EchoClient {
             Socket socket = new Socket(host, port);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader buffer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("Connection established with the server...");
+            System.out.println("Conectat la server cu succes!");
             Scanner scanner = new Scanner(System.in);
             while(true) {
-                System.out.println("Say someting: ");
+                System.out.println("Spune ceva: ");
                 String input = scanner.nextLine();
                 if("exit".equalsIgnoreCase(input)) {
                     break;

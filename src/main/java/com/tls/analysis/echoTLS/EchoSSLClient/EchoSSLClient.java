@@ -12,40 +12,56 @@ public class EchoSSLClient {
 
     public static void main(String[] args) {
 
+        System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
+        System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
+        System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
+
         String hostname;
         int port;
-        String certificates_type;
+        boolean enable_log = false;
+        String log_type = "";
+        String log_options = "";
+        String log_ssl_parameters = "";
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Insert the server to connect to: ");
+        System.out.print("Introdu host-ul server-ului: ");
         hostname = scanner.nextLine();
 
-        System.out.print("Insert the port the server is listening to: ");
+        System.out.print("Introdu port-ul pe care asculta server-ul: ");
         port = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.print("What types of certificates to use: JKS or PKS: ");
-        certificates_type = scanner.nextLine();
+        String line;
+        System.out.print("Logam mesajul (true pentru da, false pentru nu): ");
+        line = scanner.nextLine();
 
-        if(certificates_type.equalsIgnoreCase("JKS")) {
-            System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
-            System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
-            System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
-            System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
-        }
-        else if(certificates_type.equalsIgnoreCase("PKS")) {
-            System.setProperty("javax.net.ssl.keyStore", "C:\\Bogdan\\OC\\keys\\client_ks.pkcs12");
-            System.setProperty("javax.net.ssl.keyStorePassword", "password");
-            System.setProperty("javax.net.ssl.trustStore", "C:\\Bogdan\\OC\\keys\\client_ks.pkcs12");
-            System.setProperty("javax.net.ssl.trustStorePassword", "password");
-            System.out.println("This type of certificates is not yet valid!");
+        if(line.equals("true")) {
+            enable_log = true;
+            System.out.print("Ce log sa folosim (all sau ssl): ");
+            log_type = scanner.nextLine();
+            System.out.print("Ce optiune sa alegem pentru log(data, verbose): ");
+            log_options = scanner.nextLine();
+            if(log_type.equals("ssl")) {
+                System.out.println("Optiuni pentru logare de tip ssl: ");
+                System.out.print("record, handshake, keygen, session, defaultctx, sslctx, sessioncache, keymanager, trustmanager");
+                System.out.print("Alege optiunea: ");
+                log_ssl_parameters = scanner.nextLine();
+                System.setProperty("javax.net.debug", log_type + ":" + log_options + ":" + log_ssl_parameters);
+
+            } else {
+                System.setProperty("javax.net.debug", log_type + ":" + log_options);
+            }
+
         }
 
-        System.out.println("Searching for a connection on: " + hostname + " on port: " + port);
+
+
+        System.out.println("Conectare catre: " + hostname + " pe port-ul: " + port);
 
         try {
             SSLSocket client = (SSLSocket) SSLSocketFactory.getDefault().createSocket(hostname, port);
-            System.out.println("Connected to the server.");
+            System.out.println("Conectare cu succes!");
 
             PrintWriter out = new PrintWriter(client.getOutputStream(), true);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));

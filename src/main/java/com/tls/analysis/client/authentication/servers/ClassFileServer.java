@@ -51,7 +51,7 @@ public class ClassFileServer extends ClassServer {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int port;
-        String docroot = "";
+        String docroot = "src/test_file/";
         String protocol;
         boolean clientauth;
 
@@ -59,20 +59,18 @@ public class ClassFileServer extends ClassServer {
         port = in.nextInt();
         in.nextLine();
 
-        System.out.print("Introdu calea catre fisier: ");
-        docroot = in.nextLine();
 
         String line;
         System.out.print("Alege protocolul folosit (TLS petru comunicatie securizata, enter pentru comunicatie in plain text): ");
         line = in.nextLine();
         if(line.equals("TLS")) {
             protocol = "TLS";
+            System.out.print("Server-ul foloseste ClientAuthentication (true pentru da, false pentru nu): ");
+            line = in.nextLine();
+
         } else {
             protocol = "PlainSocket";
         }
-
-        System.out.print("Server-ul foloseste ClientAuthentication (true pentru da, false pentru nu): ");
-        line = in.nextLine();
 
         System.out.println("Server-ul porneste...");
         System.out.println("Asculta pe port-ul: " + port);
@@ -111,7 +109,7 @@ public class ClassFileServer extends ClassServer {
                 kmf = KeyManagerFactory.getInstance("SunX509");
                 ks = KeyStore.getInstance("JKS");
 
-                ks.load(new FileInputStream("C:\\Bogdan\\OC\\keys\\server_ks.pkcs12"), passphrase);
+                ks.load(new FileInputStream("src/credentiale/OC/keys/server_ks.pkcs12"), passphrase);
                 kmf.init(ks, passphrase);
                 ctx.init(kmf.getKeyManagers(), null, null);
 

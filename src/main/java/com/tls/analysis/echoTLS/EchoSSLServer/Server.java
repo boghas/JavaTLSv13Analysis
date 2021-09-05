@@ -13,31 +13,33 @@ public class Server {
 
         int port;
         boolean log_true = false;
+        String tls_version = "";
 
-        System.out.print("Insert the port to listen to: ");
+        System.out.print("Introdu port-ul pe care asculta server-ul: ");
         port = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.println("Server starting on localhost listening on port: " + port);
+        System.out.println("Server-ul asculta pe port-ul: " + port);
 
         System.setProperty("javax.net.ssl.keyStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "tlsanalysis");
         System.setProperty("javax.net.ssl.trustStore", "src/credentiale/tls_analysis.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "tlsanalysis");
 
-
-        // Enable log
-        //System.setProperty("javax.net.debug", "ssl:handshake:data");
-        // Log everything
-        // System.setProperty("javax.net.debug", "all:verbose");
+        System.out.print("Ce versiune de protocol folosim (TLSv1.2, TLSv1.3): ");
+        tls_version = scanner.nextLine();
 
 
         try {
-            System.out.println("Waiting for connections...");
+            System.out.println("Astepam conexiuni...");
             SSLServerSocket sslServerSocket = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(port);
             SSLSocket client = (SSLSocket) sslServerSocket.accept();
-            //client.setEnabledProtocols(new String[] {"TLSv1.3"});
-            client.setEnabledProtocols(new String[] {"TLSv1.2"});
-            //client.setEnabledCipherSuites(new String[] {"TLS_AES_128_GCM_SHA256"});
+            if(tls_version.equals("TLSv1.3")) {
+                client.setEnabledProtocols(new String[] {"TLSv1.3"});
+                client.setEnabledCipherSuites(new String[] {"TLS_AES_128_GCM_SHA256"});
+            } else {
+                client.setEnabledProtocols(new String[]{"TLSv1.2"});
+            }
             System.out.println("Connection established with: " + client.getInetAddress());
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
